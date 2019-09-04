@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+
+<script >
+
+    function handler() {
+       var a = document.getElementById("age");
+       var agePoints = Number(a.options[a.selectedIndex].value);
+       var e = document.getElementById("education");
+       var educationPoints = Number(e.options[e.selectedIndex].value);
+       var t = document.getElementById("training");
+       var trainingPoints = Number(t.options[t.selectedIndex].value);
+       var t1 = document.getElementById("training1");
+       var trainingPoints1 = Number(t1.options[t1.selectedIndex].value);
+       var l = document.getElementById("languageEF");
+       var languagePoints = Number(l.options[l.selectedIndex].value);
+       var l1 = document.getElementById("languageEF1");
+       var languagePoints1 = Number(l1.options[l1.selectedIndex].value);
+       var w = document.getElementById("work");
+       var workPoints = Number(w.options[w.selectedIndex].value);
+       var s = document.getElementById("stay");
+       var stayPoints = Number(s.options[s.selectedIndex].value);
+       var f = document.getElementById("familyCanada");
+       var familyPoints = Number(f.options[f.selectedIndex].value);
+       var c = document.getElementById("children");
+       var childrenPoints = Number(c.options[c.selectedIndex].value);
+       var am = document.getElementById("ageMarried");
+       var ageMarriedPoints = Number(am.options[am.selectedIndex].value);
+       var em = document.getElementById("educationMarried");
+       var educationMarriedPoints = Number(em.options[em.selectedIndex].value);
+       var tm = document.getElementById("trainingMarried");
+       var trainingMarriedPoints = Number(tm.options[tm.selectedIndex].value);
+       var lm = document.getElementById("languageMarriedEF");
+       var languageMarriedPoints = Number(lm.options[lm.selectedIndex].value);
+       var points;
+       points = agePoints + educationPoints + trainingPoints + trainingPoints1 + languagePoints + languagePoints1 + workPoints + stayPoints + familyPoints + childrenPoints + ageMarriedPoints + educationMarriedPoints + trainingMarriedPoints + languageMarriedPoints;
+
+       var answer;
+<!--       var co = confirm("Please");-->
+       if (points >= 52 && document.form.marriedNo.checked == true) {
+       answer = points + ", You were Selected ";
+       }else if (points >= 59 && document.form.marriedYes.checked == true) {
+       answer = points + ", You were Selected! ";
+       }else {
+       answer = points + "You were not Selected";
+       }
+       alert(answer);
+
+
+<!--       alert(points);-->
+
+
+<!--       var txt;-->
+<!--var r = confirm("Press a button!");-->
+<!--if (r == true) {-->
+<!--  txt = "You pressed OK!";-->
+<!--} else {-->
+<!--  txt = "You pressed Cancel!";-->
+<!--}-->
+<!--alert(txt);-->
+    }
+
+function showMarried(){
+if (document.form.marriedYes.checked == true) {document.getElementById('married').style.display='block';
+} else {
+document.getElementById('married').style.display='none';
+}
+}
+
+function showLanguage(){
+if (document.form.languageYes.checked == true) {document.getElementById('language').style.display='block';
+} else {
+document.getElementById('language').style.display='none';
+}
+}
+
+function showLanguage1(){
+if (document.form.languageYes1.checked == true) {document.getElementById('language1').style.display='block';
+} else {
+document.getElementById('language1').style.display='none';
+}
+}
+
+function showStudy(){
+if (document.form.studyYes.checked == true) {
+document.getElementById('trainingCanada').style.display='block';
+document.getElementById('trainingOut').style.display='none'
+} else {
+document.getElementById('trainingCanada').style.display='none'
+document.getElementById('trainingOut').style.display='block';
+}
+}
+
+function showFamily(){
+if (document.form.familyYes.checked == true) {document.getElementById('family').style.display='block';
+} else {
+document.getElementById('family').style.display='none';
+}
+}
+
+function showLanguageMarried(){
+if (document.form.languageMarriedYes.checked == true) {document.getElementById('languageMarried').style.display='block';
+} else {
+document.getElementById('languageMarried').style.display='none';
+}
+}
+
+</script>
+
+
+
+
+
+<h1>Welcome to the selection service</h1>
+<hr>
+<p>Please answer the following questions to find out if you are a possible candidate</p>
+
+<form  name="form">
+    <b>How old are you?:</b><br>
+    <FONT SIZE=2>The applicant must be over 18 years old</FONT><br>
+    <select name="age" id="age">
+        <option value="disable selected">--Select an option--</option>
+        <option value=16>18 - 35</option>
+        <option value=14>36</option>
+        <option value=12>37</option>
+        <option value=10>38</option>
+        <option value=8>39</option>
+        <option value=6>40</option>
+        <option value=4>41</option>
+        <option value=2>42</option>
+        <option value=0>>43</option>
+    </select>
+    <br>
+    <br>
+
+    <b>What is your educational level?:</b><br>
+    <select name="educationalLevel" id="education">
+        <option value="0">--Select an option--</option>
+        <option value=0>No studies</option>
+        <option value=2>High school</option>
+        <option value=6>One year post-secondary credential</option>
+        <option value=8>Two years post-secondary credential</option>
+        <option value=10>Bachelor Degree</option>
+        <option value=12>Master</option>
+        <option value=14>Doctoral</option>
+    </select>
+    <br>
+    <br>
+
+    <b>Have you earned a Canadian degree, diploma or certificate?</b><br>
+    <FONT size="2"> Note: to answer yes:<br>
+        English or French as a Second Language must not have made up more than half your study<br>
+        you must not have studied under an award that required you to return to your home country after graduation to apply your skills and knowledge<br>
+        you must have studied at a school within Canada (foreign campuses don’t count)<br>
+        you had to be enrolled full time for at least eight months, and have been physically present in Canada for at least eight months</FONT><br>
+    <input type="radio" name="study" value="Yes" id="studyYes" onclick="showStudy();" /> Yes<br>
+    <input type="radio" name="study" value="No" id="studyNo" onclick="showStudy();" /> No<br>
+    <br>
+
+    <div id="trainingCanada" style="display:none;">
+        <b>What is your educational training?:</b><br>
+        <select name="educational training" id="training">
+            <option checked value=0>--Select an option--</option>
+            <option value=20>IT</option>
+            <option value=18>Nurse</option>
+            <option value=16>Banking Area</option>
+            <option value=14>Engineer</option>
+            <option value=8>Other</option>
+        </select>
+        <br>
+        <br>
+    </div>
+
+    <div id="trainingOut" style="display:none;">
+        <b>What is your educational training?:</b><br>
+        <select name="educational training" id="training1">
+            <option checked value=0>--Select an option--</option>
+            <option value=12>IT</option>
+            <option value=10>Nurse</option>
+            <option value=8>Banking Area</option>
+            <option value=6>Engineer</option>
+            <option value=0>Other</option>
+        </select>
+        <br>
+        <br>
+    </div>
+
+    <b>Do you have a valid language certificate? (submitted his exam less than 2 years ago):</b><br>
+    <input type="radio" name="language" value="Yes" id="languageYes" onclick="showLanguage();" /> Yes<br>
+    <input type="radio" name="language" value="No" id="languageNo" onclick="showLanguage();" /> No<br>
+
+
+    <div id="language" style="display:none;">
+        <b>Please enter the result of your exam:</b><br>
+        <select name="language" id="languageEF">
+            <option checked value=0>--Select an option--</option>
+            <option value=10>Listening = 249 - 279, Reading = 207 - 232, Writing = 310 - 348, Speaking = 310 - 348 || Listening = 6, Reading = 6, Writing = 6, Speaking = 6</option>
+            <option value=12>Listening = 280 - 297, Reading = 233 - 247, Writing = 349 - 370, Speaking = 349 - 370 || Listening = 7.5, Reading = 6.5, Writing = 6.5, Speaking = 6.5</option>
+            <option value=14>Listening = 298 - 315, Reading = 248 - 262, Writing = 371 - 392, Speaking = 371 - 392 || Listening = 8, Reading = 7 - 7.5, Writing = 7, Speaking = 7</option>
+            <option value=16>Listening > 315, Reading > 262, Writing > 392, speaking > 392 || Listening >= 8.5, Reading >= 8, Writing >= 7.5, Speaking >= 7.5</option>
+        </select>
+        <br>
+        <br>
+
+        <b>Want to add another language test?:</b><br>
+        <input type="radio" name="language1" value="Yes" id="languageYes1" onclick="showLanguage1();" /> Yes<br>
+        <input type="radio" name="language1" value="No" id="languageNo1" onclick="showLanguage1();" /> No<br>
+        <br>
+    </div>
+
+    <div id="language1" style="display:none;">
+        <b>Please enter the result of your test:</b><br>
+        <select name="language1" id="languageEF1">
+            <option checked value=0>--Select an option--</option>
+            <option value=10>Listening = 249 - 279, Reading = 207 - 232, Writing = 310 - 348, Speaking = 310 - 348 || Listening = 6, Reading = 6, Writing = 6, Speaking = 6</option>
+            <option value=12>Listening = 280 - 297, Reading = 233 - 247, Writing = 349 - 370, Speaking = 349 - 370 || Listening = 7.5, Reading = 6.5, Writing = 6.5, Speaking = 6.5</option>
+            <option value=14>Listening = 298 - 315, Reading = 248 - 262, Writing = 371 - 392, Speaking = 371 - 392 || Listening = 8, Reading = 7 - 7.5, Writing = 7, Speaking = 7</option>
+            <option value=16>Listening > 315, Reading > 262, Writing > 392, speaking > 392 || Listening >= 8.5, Reading >= 8, Writing >= 7.5, Speaking >= 7.5</option>
+        </select>
+        <br>
+        <br>
+    </div>
+
+
+    <b>How many months of work experience do you have?:</b><br>
+    <select name="workExperience" id="work">
+        <option value="disable selected">--Select an option--</option>
+        <option value=0>0-6</option>
+        <option value=4>6-24</option>
+        <option value=6>24-48</option>
+        <option value=8>>48</option>
+    </select>
+    <br>
+    <br>
+
+    <b>How long have you been in Canada (answer in day)?:</b><br>
+    <select name="stayCanada" id="stay">
+        <option value="disable selected">--Select an option--</option>
+        <option value=1>14-90</option>
+        <option value=2>90-180</option>
+        <option value=5>>180</option>
+        <option value=0>N/A</option>
+    </select>
+    <br>
+    <br>
+
+    <b>Are you family in Canada?:</b><br>
+    <input type="radio" name="family" value="Yes" id="familyYes" onclick="showFamily();" /> Yes<br>
+    <input type="radio" name="family" value="No" id="familyNo" onclick="showFamily();" /> No<br>
+
+    <div id="family" style="display:none;">
+        <b>Please select the relationship:</b><br>
+        <select name="familyCanada" id="familyCanada">
+            <option checked value=0>--Select an option--</option>
+            <option value=3>Parents</option>
+            <option value=3>Son/Daughter</option>
+            <option value=3>Grandfather/Grandmother</option>
+            <option value=3>Sister/Brother</option>
+            <option value=0>Other</option>
+        </select>
+        <br>
+        <br>
+    </div>
+
+    <b>How many children under 21 have you?:</b><br>
+    <select name="children" id="children">
+        <option value="disable selected">--Select an option--</option>
+        <option value=0>0</option>
+        <option value=4>1</option>
+        <option value=8>2 or more</option>
+    </select>
+    <br>
+    <br>
+
+    <b>Are you married?:</b> <br>
+    <input type="radio" name="married" value="Yes" id="marriedYes" onclick="showMarried();" /> Yes<br>
+    <input type="radio" name="married" value="No" id="marriedNo" onclick="showMarried();" /> No<br>
+
+
+    <div id="married" style="display:none;">
+        <h4>Accompanying information</h4>
+        <b>How old are you?:</b><br>
+        <select name="age" id="ageMarried">
+            <option checked value=0>--Select an option--</option>
+            <option value=3>18 - 35</option>
+            <option value=2>36 - 39</option>
+            <option value=1>40 - 42</option>
+            <option value=0>>43</option>
+        </select>
+        <br>
+        <br>
+
+        <b>What is your educational level?:</b><br>
+        <select name="educational level" id="educationMarried">
+            <option checked value=0>--Select an option--</option>
+            <option value=0>No studies</option>
+            <option value=1>High school</option>
+            <option value=2>One or two years post-secondary credential</option>
+            <option value=3>Bachelor Degree</option>
+            <option value=4>Master or Doctoral</option>
+        </select>
+        <br>
+        <br>
+
+        <b>What is your educational training?:</b><br>
+        <select name="educational training" id="trainingMarried">
+            <option checked value=0>--Select an option--</option>
+            <option value=4>IT</option>
+            <option value=3>Nurse</option>
+            <option value=2>Banking Area</option>
+            <option value=1>Engineer</option>
+            <option value=0>Other</option>
+        </select>
+        <br>
+        <br>
+
+        <b>Do you have a valid language certificate? (submitted his exam less than 2 years ago):</b><br>
+        <input type="radio" name="languageMarried" value="Yes" id="languageMarriedYes" onclick="showLanguageMarried();" /> Yes<br>
+        <input type="radio" name="languageMarried" value="No" id="languageMarriedNo" onclick="showLanguageMarried();" /> No<br>
+        <br>
+
+        <div id="languageMarried" style="display:none;">
+            <b>Please enter the result of your test:</b><br>
+            <select name="language" id="languageMarriedEF">
+                <option checked value=0>--Select an option--</option>
+                <option value=5>Listening = 249 - 279, Reading = 207 - 232, Writing = 310 - 348, Speaking = 310 - 348 || Listening = 6, Reading = 6, Writing = 6, Speaking = 6</option>
+                <option value=6>Listening = 280 - 297, Reading = 233 - 247, Writing = 349 - 370, Speaking = 349 - 370 || Listening = 7.5, Reading = 6.5, Writing = 6.5, Speaking = 6.5</option>
+                <option value=7>Listening = 298 - 315, Reading = 248 - 262, Writing = 371 - 392, Speaking = 371 - 392 || Listening = 8, Reading = 7 - 7.5, Writing = 7, Speaking = 7</option>
+                <option value=8>Listening > 315, Reading > 262, Writing > 392, speaking > 392 || Listening >= 8.5, Reading >= 8, Writing >= 7.5, Speaking >= 7.5</option>
+            </select>
+            <br>
+            <br>
+        </div>
+
+    </div>
+
+    <!--    <input type="submit" value="Submit">-->
+    <button type="button" onclick="handler()">Submit</button>
+</form>
+
+
+</body>
+</html>
