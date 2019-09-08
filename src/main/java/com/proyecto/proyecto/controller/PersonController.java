@@ -25,11 +25,6 @@ public class PersonController {
         return "person";
     }
 
-    @GetMapping("/index")
-    public String general(Model model){
-        model.addAttribute("index", new Person());
-        return "index";
-    }
 
     @PostMapping("/person")
     public String savePersonal(@Valid Person person, BindingResult result, ModelMap model, RedirectAttributes redirectAttributes){
@@ -42,11 +37,7 @@ public class PersonController {
         return "redirect:/person";
     }
 
-//    @PostMapping("/person")
-//    public String savePersonal(@ModelAttribute Person person, Model model){
-//        personRepository.save(person);
-//        return "redirect:/person";
-//    }
+
 
     @ModelAttribute("status")
     public List<String> initializeStatus(){

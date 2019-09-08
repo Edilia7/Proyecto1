@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <meta charset="UTF-8">-->
     <title>Person</title>
 </head>
 <body>
@@ -33,17 +34,15 @@
         </fieldset>
 
         <fieldset th:align="justify">
-            <p>Sex:</p>
-            <p><input type="radio" th:field="*{sex}" value="Male"/>Male</p>
-            <p><input type="radio" th:field="*{sex}" value="Female"/>Female
+            <p>Sex: <input type="radio" th:field="*{sex}" value="Male"/>Male <input type="radio" th:field="*{sex}" value="Female"/>Female
             <label th:if="${#fields.hasErrors('sex')}"  th:errors="*{sex}"  th:class="'error'">Error in Sex</label></p>
-        <p>Civil Status: </p>
+        <p>Civil Status:
             <select th:field="*{civilStatus}">
                 <option th:each="civilStatus : ${status}" th:value="${civilStatus}" th:text="${civilStatus}">Civil Status</option>
             </select>
-            <label th:if="${#fields.hasErrors('civilStatus')}"  th:errors="*{civilStatus}"  th:class="'error'">Civil Status</label>
+            <label th:if="${#fields.hasErrors('civilStatus')}"  th:errors="*{civilStatus}"  th:class="'error'">Civil Status</label></p>
         </fieldset>
-
+        <br>
         <button type="submit">Save</button>
     </form>
 

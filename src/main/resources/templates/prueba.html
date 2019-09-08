@@ -122,26 +122,42 @@
             th:selected="${i==75}"></option>
 </select>
 
-<form name = 'f' th: object = "$ {personForm}" method = 'POST'>
-    <table>
-        <tr>
-            <td> Seleccionar país: </td>
-            <td>
-                <select th: field = "* {countryId}">
-                    <option value = ""> - </option>
-                    <opción th: cada = "país: $ {países}"
-                            th: value = "$ {country.countryId}"
-                            th: utext = "$ {country.countryName}" />
-                </select>
 
-            </td>
-        </tr>
 
-        <tr>
-            <td> <input name = "submit" type = "submit" value = "submit" /> </td>
-        </tr>
-    </table>
-</form>
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> <a class="navbar-brand" href="#">My project</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{/}">Home</a>
+                </li>
+                <li th:classappend="${module == 'tasks' ? 'active' : ''}">
+                    <a href="#" th:href="@{/task}">Tasks</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                    <a href="/signin" th:href="@{/signin}">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in </a>
+                </li>
+                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout </a>
+                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 
 </body>
 
