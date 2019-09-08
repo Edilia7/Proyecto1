@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Selection</title>
+</head>
+<body>
+
+<div class="content">
+
+    <!-- Thyemeleaf ${template...} is an special attribute injected by
+         web controller, it's essentially a DAO object with an inner method like a JSON parser that read a document from a mongo collection of templates (static content) and have a .get() method to perform a JSON query so "template.get('tab[0].title')" return the value of 'title' field in the first element of an array, ie: tab:[{title:'some'}]
+    -->
+
+    <div id="tabs1" class="tabs col-2" style="background-color: #ACACAC; margin-top:2em;">
+        <!-- Template (Thyemeleaf as server-side fallback) -->
+        <div id="myTabGroup1" class="tabGroup">
+            <input type="radio" name="myTabGroup" id="tab1" class="tab1" checked="checked"></input>
+            <label for="tab1" th:utext="${template.get('tab[0].title')}">tab1</label>
+            <input type="radio" name="myTabGroup" id="tab2" class="tab2"></input>
+            <label for="tab2" th:utext="${template.get('tab[1].title')}">tab2</label>
+            <input type="radio" name="myTabGroup" id="tab3" class="tab3"></input>
+            <label for="tab3" th:utext="${template.get('tab[2].title')}">tab3</label>
+            <div class="tab1" th:utext="${template.get('tab[0].content')}">etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1etiqueta1</div>
+            <div class="tab2" th:utext="${template.get('tab[1].content')}">etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2etiqueta2</div>
+            <div class="tab3" th:utext="${template.get('tab[2].content')}">etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3etiqueta3</div>
+        </div>
+
+    </div>
+
+    <div id="tabs2" class="tabs col-2" style="margin-top:2em;">
+        <!-- Template (Thyemeleaf as server-side fallback) -->
+        <div id="myTabGroup2" class="tabAccordion">
+            <div class="row-tab">
+                <input type="radio" name="myTabGroup2" id="tab4" class="tab4" checked="checked">
+                <label for="tab4" th:utext="${template.get('tab[0].title')}">tab4</label>
+                <div class="tab4" th:utext="${template.get('tab[0].content')}">tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1tab1</div>
+            </div>
+            <div class="row-tab">
+                <input type="radio" name="myTabGroup2" id="tab5" class="tab5">
+                <label for="tab5" th:utext="${template.get('tab[1].title')}">tab5</label>
+                <div class="tab5" th:utext="${template.get('tab[1].content')}">tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2tab2</div>
+            </div>
+            <div class="row-tab">
+                <input type="radio" name="myTabGroup2" id="tab6" class="tab6">
+                <label for="tab6" th:utext="${template.get('tab[2].content')}">tab6</label>
+                <div class="tab6" th:utext="${template.get('tab[2].content')}">tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3tab3</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

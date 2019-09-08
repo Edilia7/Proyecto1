@@ -6,49 +6,47 @@
 </head>
 <body>
     <h3>Personal Information</h3>
-        <form  method="post">
-            <p>First name: <input type="text" value="" name="firstName"/></p>
-            <p>Middle name: <input type="text" value="" name="middleName"/></p>
-            <p>Family name: <input type="text" value="" name="familyName"/></p>
-            <p>Age: <input type="int" value="" name="age"/></p>
-            <p>Date of birth: <input type="date" value="" name="dateBirth"/></p>
-            <p>City of birth: <input type="text" value="" name="cityBirth"/></p>
-            <p>Province of birth: <input type="text" value="" name="provinceBirth"/></p>
-            <p>Country of birth: <input type="text" value="" name="countryBirth"/></p>
-            <p>Nationality: <input type="text" value="" name="nationality"/></p>
-            <p>Sex: <input type="text" value="" name="sex"/></p>
-            <p>Civil Status: <input type="text" value="" name="civilStatus"/></p>
 
-            <button type="submit">Save</button>
-        </form>
+    <form action="#" th:action="@{/person}" th:object="${person}" method="post">
+        <input type="hidden"  th:value="${id}"  th:field="*{id}" />
 
+        <fieldset th:align="justify">
+        <p>First name: <input type="text" th:field="*{firstName}" />
+            <label th:if="${#fields.hasErrors('firstName')}"  th:errors="*{firstName}"  th:class="'error'">Error in First Name</label></p>
+        <p>Middle name: <input type="text" th:field="*{middleName}" /></p>
+        <p>Family name: <input type="text" th:field="*{familyName}" />
+            <label th:if="${#fields.hasErrors('familyName')}"  th:errors="*{familyName}"  th:class="'error'">Error in Family Name</label></p>
+        </fieldset>
 
-<!--    <form action="#" th:action="@{savePerson}" th:object="${person}" method="post">-->
-<!--        <p>First name: <input type="text" th:field="*{firstName}" /></p>-->
-<!--        <p>Middle name: <input type="text" th:field="*{middleName}" /></p>-->
-<!--        <p>Family name: <input type="text" th:field="*{familyName}" /></p>-->
-<!--        <p>Age: <input type="text" th:field="*{age}" /></p>-->
-<!--        <p>Date of birth: <input type="text" th:field="*{dateBirth}" /></p>-->
-<!--        <p>City of birth: <input type="text" th:field="*{cityBirth}" /></p>-->
-<!--        <p>Province of birth: <input type="text" th:field="*{provinceBirth}" /></p>-->
-<!--        <p>Country of birth: <input type="text" th:field="*{countryBirth}" /></p>-->
-<!--        <p>Nationality: <input type="text" th:field="*{nationality}" /></p>-->
-<!--        <p>Sex: <input type="text" th:field="*{sex}" /></p>-->
-<!--        <p>Civil Status: <input type="text" th:field="*{civilStatus}" /></p>-->
-<!--    </form>-->
-<!--    <form name="person" method="post">-->
-<!--        <p>First name: <input type="text" name="firstName" /></p>-->
-<!--        <p>Middle name: <input type="text" name="middleName" /></p>-->
-<!--        <p>Family name: <input type="text" name="familyName" /></p>-->
-<!--        <p>Age: <input type="text" name="age" /></p>-->
-<!--        <p>Date of birth: <input type="text" name="dateBirth" /></p>-->
-<!--        <p>City of birth: <input type="text" name="cityBirth" /></p>-->
-<!--        <p>Province of birth: <input type="text" name="provinceBirth" /></p>-->
-<!--        <p>Country of birth: <input type="text" name="countryBirth" /></p>-->
-<!--        <p>Nationality: <input type="text" name="nationality" /></p>-->
-<!--        <p>Sex: <input type="text" name="sex" /></p>-->
-<!--        <p>Civil Status: <input type="text" name="civilStatus" /></p>-->
-<!--    </form>-->
+        <fieldset th:align="justify">
+        <p>Age: <input type="int" th:field="*{age}"/></p>
+<!--            <label th:if="${#fields.hasErrors('age')}"  th:errors="*{age}"  th:class="'error'">Error in Age</label>-->
+        <p>Date of birth: <input type="date" th:field="*{dateBirth}" /></p>
+<!--            <label th:if="${#fields.hasErrors('dateBirth')}"  th:errors="*{dateBirth}"  th:class="'error'">Error in Date Birth</label>-->
+        <p>City of birth: <input type="text" th:field="*{cityBirth}" />
+            <label th:if="${#fields.hasErrors('cityBirth')}"  th:errors="*{cityBirth}"  th:class="'error'">Error in City Birth</label></p>
+        <p>Province of birth: <input type="text" th:field="*{provinceBirth}" /></p>
+        <p>Country of birth: <input type="text" th:field="*{countryBirth}" />
+            <label th:if="${#fields.hasErrors('countryBirth')}"  th:errors="*{countryBirth}"  th:class="'error'">Error in Country Birth</label></p>
+        <p>Nationality: <input type="text" th:field="*{nationality}" />
+            <label th:if="${#fields.hasErrors('nationality')}"  th:errors="*{nationality}"  th:class="'error'">Error in Nationality</label></p>
+        </fieldset>
+
+        <fieldset th:align="justify">
+            <p>Sex:</p>
+            <p><input type="radio" th:field="*{sex}" value="Male"/>Male</p>
+            <p><input type="radio" th:field="*{sex}" value="Female"/>Female
+            <label th:if="${#fields.hasErrors('sex')}"  th:errors="*{sex}"  th:class="'error'">Error in Sex</label></p>
+        <p>Civil Status: </p>
+            <select th:field="*{civilStatus}">
+                <option th:each="civilStatus : ${status}" th:value="${civilStatus}" th:text="${civilStatus}">Civil Status</option>
+            </select>
+            <label th:if="${#fields.hasErrors('civilStatus')}"  th:errors="*{civilStatus}"  th:class="'error'">Civil Status</label>
+        </fieldset>
+
+        <button type="submit">Save</button>
+    </form>
+
 
 </body>
 </html>

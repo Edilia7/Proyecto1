@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Education</title>
 </head>
 <body>
 <h3>Education</h3>
-    <form method="post">
-        <p>Educational level: <input type="text" value="" name="educationalLevel"/></p>
-        <p>Training Area: <input type="text" value="" name="trainingArea"/></p>
-        <p>Course name: <input type="text" value="" name="courseName"/></p>
-        <p>Institution name: <input type="int" value="" name="institution"/></p>
-        <p>Start date: <input type="date" value="" name="startDate"/></p>
-        <p>Final Date: <input type="date" value="" name="finalDate"/></p>
-        <p>City: <input type="text" value="" name="city"/></p>
-        <p>Province: <input type="text" value="" name="province"/></p>
-        <p>Country: <input type="text" value="" name="country"/></p>
+<!--<form action="#" th:action="@{/person}" th:object="${person}" method="post">-->
+<!--    <p>First name: <input type="text" th:field="*{firstName}" /></p>-->
+<!--    <p>Middle name: <input type="text" th:field="*{middleName}" /></p>-->
+<!--    <p>Family name: <input type="text" th:field="*{familyName}" /></p>-->
+<!--    <p>Age: <input type="text" th:field="*{age}" /></p>-->
+<!--    <p>Date of birth: <input type="date" th:field="*{dateBirth}" /></p>-->
+<!--    <p>City of birth: <input type="text" th:field="*{cityBirth}" /></p>-->
+<!--    <p>Province of birth: <input type="text" th:field="*{provinceBirth}" /></p>-->
+<!--    <p>Country of birth: <input type="text" th:field="*{countryBirth}" /></p>-->
+<!--    <p>Nationality: <input type="text" th:field="*{nationality}" /></p>-->
+<!--    <p>Sex: <input type="text" th:field="*{sex}" /></p>-->
+<!--    <p>Civil Status: <input type="text" th:field="*{civilStatus}" /></p>-->
+<!---->
+<!--    <button type="submit">Save</button>-->
+<!--</form>-->
+    <form action="#" th:action="@{/education}" th:object="${education}" method="post">
+        <p>Educational level: <input type="text" th:field="*{educationalLevel}"/></p>
+        <p>Training Area: <input type="text" th:field="*{trainingArea}"/></p>
+        <p>Course name: <input type="text" th:field="*{courseName}"/></p>
+        <p>Institution name: <input type="int" th:field="*{institution}"/></p>
+        <p>Start date: <input type="date" th:field="*{startDate}"/></p>
+        <p>Final Date: <input type="date" th:field="*{finalDate}"/></p>
+        <p>City: <input type="text" th:field="*{city}"/></p>
+        <p>Province: <input type="text" th:field="*{province}"/></p>
+        <p>Country: <input type="text" th:field="*{country}"/></p>
+
         <button type="submit">Save</button>
     </form>
 

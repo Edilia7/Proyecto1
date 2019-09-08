@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
 
 @Entity
@@ -13,16 +15,23 @@ public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
+    @NotBlank
     private String firstName;
     private String middleName;
+    @NotBlank
     private String familyName;
     private int age;
     private String dateBirth;
+    @NotBlank
     private String cityBirth;
     private String provinceBirth;
+    @NotBlank
     private String countryBirth;
+    @NotBlank
     private String nationality;
+    @NotBlank
     private String sex;
+    @NotBlank
     private String civilStatus;
 
     public long getId() {
