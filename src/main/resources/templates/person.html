@@ -8,6 +8,8 @@
 <body>
     <h3>Personal Information</h3>
 
+
+
     <form action="#" th:action="@{/person}" th:object="${person}" method="post">
         <input type="hidden"  th:value="${id}"  th:field="*{id}" />
 
@@ -20,7 +22,7 @@
         </fieldset>
 
         <fieldset th:align="justify">
-        <p>Age: <input type="int" th:field="*{age}"/></p>
+        <p>Age: <input type="text" th:field="*{age}"/></p>
 <!--            <label th:if="${#fields.hasErrors('age')}"  th:errors="*{age}"  th:class="'error'">Error in Age</label>-->
         <p>Date of birth: <input type="date" th:field="*{dateBirth}" /></p>
 <!--            <label th:if="${#fields.hasErrors('dateBirth')}"  th:errors="*{dateBirth}"  th:class="'error'">Error in Date Birth</label>-->

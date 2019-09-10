@@ -19,22 +19,36 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
 
-    @GetMapping("/person")
-    public String formPersonal(Model model){
+//    @GetMapping("/person")
+//    public String formPersonal(Model model){
+//        model.addAttribute("person", new Person());
+//        return "person";
+//    }
+
+    @GetMapping("/index")
+    public String general(Model model) {
         model.addAttribute("person", new Person());
-        return "person";
+        return "index";
     }
 
-
-    @PostMapping("/person")
-    public String savePersonal(@Valid Person person, BindingResult result, ModelMap model, RedirectAttributes redirectAttributes){
+    @PostMapping("/index")
+    public String savePersonal(@ModelAttribute @Valid Person person, BindingResult result, ModelMap model){
         if(result.hasErrors()){
             System.out.println("Has errors");
-            return "person";
+            return "index";
         }
-
         personRepository.save(person);
-        return "redirect:/person";
+        return "redirect:/index";
+
+
+//    @PostMapping("/person")
+//    public String savePersonal(@ModelAttribute @Valid Person person, BindingResult result, ModelMap model){
+//        if(result.hasErrors()){
+//            System.out.println("Has errors");
+//            return "person";
+//        }
+//        personRepository.save(person);
+//        return "redirect:/person";
     }
 
 

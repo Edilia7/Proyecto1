@@ -6,31 +6,27 @@
 </head>
 <body>
 <h3>Education</h3>
-<!--<form action="#" th:action="@{/person}" th:object="${person}" method="post">-->
-<!--    <p>First name: <input type="text" th:field="*{firstName}" /></p>-->
-<!--    <p>Middle name: <input type="text" th:field="*{middleName}" /></p>-->
-<!--    <p>Family name: <input type="text" th:field="*{familyName}" /></p>-->
-<!--    <p>Age: <input type="text" th:field="*{age}" /></p>-->
-<!--    <p>Date of birth: <input type="date" th:field="*{dateBirth}" /></p>-->
-<!--    <p>City of birth: <input type="text" th:field="*{cityBirth}" /></p>-->
-<!--    <p>Province of birth: <input type="text" th:field="*{provinceBirth}" /></p>-->
-<!--    <p>Country of birth: <input type="text" th:field="*{countryBirth}" /></p>-->
-<!--    <p>Nationality: <input type="text" th:field="*{nationality}" /></p>-->
-<!--    <p>Sex: <input type="text" th:field="*{sex}" /></p>-->
-<!--    <p>Civil Status: <input type="text" th:field="*{civilStatus}" /></p>-->
-<!---->
-<!--    <button type="submit">Save</button>-->
-<!--</form>-->
+
     <form action="#" th:action="@{/education}" th:object="${education}" method="post">
-        <p>Educational level: <input type="text" th:field="*{educationalLevel}"/></p>
-        <p>Training Area: <input type="text" th:field="*{trainingArea}"/></p>
-        <p>Course name: <input type="text" th:field="*{courseName}"/></p>
-        <p>Institution name: <input type="int" th:field="*{institution}"/></p>
+        <p>Educational level:
+            <select th:field="*{educationalLevel}">
+                <option th:each="educationalLevel : ${level}" th:value="${educationalLevel}" th:text="${educationalLevel}"></option>
+            </select>
+<!--        <p>Educational level: <input type="text" th:field="*{educationalLevel}"/>-->
+            <label th:if="${#fields.hasErrors('educationalLevel')}"  th:errors="*{educationalLevel}"  th:class="'error'">Error in educational level</label></p>
+        <p>Training Area: <input type="text" th:field="*{trainingArea}"/>
+            <label th:if="${#fields.hasErrors('trainingArea')}"  th:errors="*{trainingArea}"  th:class="'error'">Error in training area</label></p>
+        <p>Course name: <input type="text" th:field="*{courseName}"/>
+            <label th:if="${#fields.hasErrors('courseName')}"  th:errors="*{courseName}"  th:class="'error'">Error in course name</label></p>
+        <p>Institution name: <input type="text" th:field="*{institution}"/>
+            <label th:if="${#fields.hasErrors('institution')}"  th:errors="*{institution}"  th:class="'error'">Error in institution</label></p>
         <p>Start date: <input type="date" th:field="*{startDate}"/></p>
         <p>Final Date: <input type="date" th:field="*{finalDate}"/></p>
-        <p>City: <input type="text" th:field="*{city}"/></p>
+        <p>City: <input type="text" th:field="*{city}"/>
+            <label th:if="${#fields.hasErrors('city')}"  th:errors="*{city}"  th:class="'error'">Error in city</label></p>
         <p>Province: <input type="text" th:field="*{province}"/></p>
-        <p>Country: <input type="text" th:field="*{country}"/></p>
+        <p>Country: <input type="text" th:field="*{country}"/>
+            <label th:if="${#fields.hasErrors('country')}"  th:errors="*{country}"  th:class="'error'">Error in country</label></p>
 
         <button type="submit">Save</button>
     </form>

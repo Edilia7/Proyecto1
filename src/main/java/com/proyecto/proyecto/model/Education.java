@@ -1,9 +1,7 @@
 package com.proyecto.proyecto.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
@@ -13,15 +11,25 @@ public class Education implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String educationalLevel;
+    @NotBlank
     private String trainingArea;
+    @NotBlank
     private String courseName;
+    @NotBlank
     private String institution;
     private String startDate;
     private String finalDate;
+    @NotBlank
     private String city;
     private String province;
+    @NotBlank
     private String country;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id", nullable = false)
+    private Person person;
 
     public Long getId() {
         return id;

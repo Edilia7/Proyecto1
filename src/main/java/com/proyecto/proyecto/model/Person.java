@@ -1,12 +1,10 @@
 package com.proyecto.proyecto.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 public class Person implements Serializable {
@@ -33,6 +31,9 @@ public class Person implements Serializable {
     private String sex;
     @NotBlank
     private String civilStatus;
+
+    @OneToMany(mappedBy = "person")
+    private Set<Education> education;
 
     public long getId() {
         return id;
